@@ -1,0 +1,98 @@
+
+  <section class="opening-hours overflow-hidden">
+    <div class="container">
+      <h2 class="text-uppercase lined">Autor</h2>
+      <p class="text-muted mb-5">Gerenciamento de autor</p>
+
+      <div id="toast" *ngFor="let toast of toastService.toasts; let i = index">
+        <!-- <div (click)="removeToast(i)">X</div> -->
+        <div id="desc" [ngClass]="toast.type === 'success' ? 'success' : 'error'">
+          {{ toast.message }}
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button type="button" class="btn btn-info btn-sm pull-right" data-bs-toggle="modal" data-bs-target="#modaladdupdate" (click)="selectAddUpdate('add')">Adicionar</button>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-lg-12 mb-5 mb-lg-0">
+          <div class="card shadow-sm border-0">
+            <div class="card-body border-top border-md border-primary p-5">
+              <table class="table table-striped table-responsive table-hover">
+                <thead>
+                  <tr class="info">
+                    <th width="10%">ID</th>
+                    <th width="70%">Nome</th>
+                    <th width="20%">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="carregando">
+                    <td colspan="3" class="text-center">Carregando dados...</td>
+                  </tr>
+                  <tr *ngFor="let item of itemList">
+                    <td>{{item.CodAu}}</td>
+                    <td>{{item.Nome}}</td>
+                    <td>
+                      <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modaladdupdate" (click)="selectAddUpdate('update'); onEdit(item.CodAu)">Editar</button> &nbsp;
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modaldelete" (click)="onDelete(item.CodAu)">Deletar</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="!carregando && itemList.length == 0">
+                    <td colspan="3" class="text-center">Nenhum resultado encontrado</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="modal fade" id="modaladdupdate" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">{{txtAddUpdate}} autor</h4>
+                    </div>
+                    <form action="" method="post" class="form-horizontal" (ngSubmit)="onCreateUpdate()">
+                      <div class="modal-body">
+                          <div class="form-group">
+                            <label class="control-label">Nome</label>
+                            <input type="hidden" class="form-control" name="CodAu" [(ngModel)]="form.CodAu">
+                            <input type="text" class="form-control" name="Nome" [(ngModel)]="form.Nome">
+                          </div>
+                          <span *ngIf="txtAddUpdate==='Alterar' && carregando" class="text-danger">Carregando...</span>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal" *ngIf="txtAddUpdate==='Adicionar'">Salvar</button>
+                        <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal" *ngIf="txtAddUpdate==='Alterar' && !carregando">Atualizar</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" >Fechar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="modaldelete" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Deseja realmente deletar o registro?</h4>
+                    </div>
+                    <form action="" method="post" class="form-horizontal" (ngSubmit)="onSubmitDelete()">
+                      <div class="modal-body">
+                        <strong style="color: #DC3645;">O registro será totalmente deletado</strong>
+                        <input type="hidden" class="form-control" name="idDel" [(ngModel)]="idDel">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Sim</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" >Não</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

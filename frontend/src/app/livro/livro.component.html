@@ -1,0 +1,147 @@
+
+  <section class="opening-hours overflow-hidden">
+    <div class="container">
+      <h2 class="text-uppercase lined">Livro</h2>
+      <p class="text-muted mb-5">Gerenciamento de livro</p>
+
+      <div id="toast" *ngFor="let toast of toastService.toasts; let i = index">
+        <!-- <div (click)="removeToast(i)">X</div> -->
+        <div id="desc" [ngClass]="toast.type === 'success' ? 'success' : 'error'">
+          {{ toast.message }}
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button type="button" class="btn btn-info btn-sm pull-right" data-bs-toggle="modal" data-bs-target="#modaladdupdate" (click)="selectAddUpdate('add')">Adicionar</button>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-lg-12 mb-5 mb-lg-0">
+          <div class="card shadow-sm border-0">
+            <div class="card-body border-top border-md border-primary p-5">
+              <table class="table table-striped table-responsive table-hover">
+                <thead>
+                  <tr class="info">
+                    <th width="10%">ID</th>
+                    <th width="20%">Título</th>
+                    <th width="10%">Editora</th>
+                    <th width="10%">Edição</th>
+                    <th width="15%">Ano Publicação</th>
+                    <th width="5%">Autor</th>
+                    <th width="10%">Assunto</th>
+                    <th width="20%">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="carregando">
+                    <td colspan="8" class="text-center">Carregando dados...</td>
+                  </tr>
+                  <tr *ngFor="let item of itemList">
+                    <td>{{item.Codl}}</td>
+                    <td>{{item.Titulo}}</td>
+                    <td>{{item.Editora}}</td>
+                    <td>{{item.Edicao}}</td>
+                    <td>{{item.AnoPublicacao}}</td>
+                    <td>
+                      <div *ngFor="let autor of item.autor">
+                        {{autor.Nome}}
+                      </div>
+                    </td>
+                    <td>{{item.assunto[0]?.Descricao}}</td>
+                    <td>
+                      <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modaladdupdate" (click)="selectAddUpdate('update'); onEdit(item.Codl)">Editar</button> &nbsp;
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modaldelete" (click)="onDelete(item.Codl)">Deletar</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="!carregando && itemList.length == 0">
+                    <td colspan="8" class="text-center">Nenhum resultado encontrado</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="modal fade" id="modaladdupdate" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">{{txtAddUpdate}} livro</h4>
+                    </div>
+                    <form action="" method="post" class="form-horizontal" (ngSubmit)="onCreateUpdate()">
+                      <div class="modal-body">
+                          <div class="form-group">
+                            <label class="control-label">Título</label>
+                            <input type="hidden" class="form-control" name="Codl" [(ngModel)]="form.Codl">
+                            <input type="text" class="form-control" name="Titulo" [(ngModel)]="form.Titulo">
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Editora</label>
+                            <input type="text" class="form-control" name="Editora" [(ngModel)]="form.Editora">
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Edição</label>
+                            <input type="text" class="form-control" name="Edicao" [(ngModel)]="form.Edicao">
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Ano Publicação</label>
+                            <input type="text" class="form-control" name="AnoPublicacao" [(ngModel)]="form.AnoPublicacao">
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Autor</label>
+                            <div *ngFor="let item of autorList">
+                              <input type="checkbox" [checked]="item.checked" (change)="item.checked = !item.checked">
+                              <!-- <input type="checkbox" name="Autor_CodAu"
+                                [(ngModel)]="form.Autor_CodAu"
+                                [checked]="true"
+                              > -->
+                              {{ item.Nome }}
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Assunto</label>
+                            <select class="form-control" name="Assunto_CodAs" [(ngModel)]="form.Assunto_CodAs">
+                              <option value="0">Selecione o assunto</option>
+                              <option
+                                *ngFor="let item of assuntoList"
+                                [value]="item.CodAs"
+                              >
+                                {{ item.Descricao }}
+                              </option>
+                            </select>
+                          </div>
+                          <span *ngIf="txtAddUpdate==='Alterar' && carregando" class="text-danger">Carregando...</span>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal" *ngIf="txtAddUpdate==='Adicionar'">Salvar</button>
+                        <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal" *ngIf="txtAddUpdate==='Alterar' && !carregando">Atualizar</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" >Fechar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="modaldelete" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Deseja realmente deletar o registro?</h4>
+                    </div>
+                    <form action="" method="post" class="form-horizontal" (ngSubmit)="onSubmitDelete()">
+                      <div class="modal-body">
+                        <strong style="color: #DC3645;">O registro será totalmente deletado</strong>
+                        <input type="hidden" class="form-control" name="idDel" [(ngModel)]="idDel">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Sim</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" >Não</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

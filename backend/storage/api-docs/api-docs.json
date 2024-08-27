@@ -1,0 +1,590 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cadastro de Livros API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/assunto/create": {
+            "post": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Cadastra o Descricao do Assunto",
+                "description": "Cadastra o Descricao do Assunto",
+                "operationId": "77137bf163d4a6b0392de48af6d80ade",
+                "parameters": [
+                    {
+                        "name": "Descricao",
+                        "in": "query",
+                        "description": "Insira o nome do assunto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/assunto/read": {
+            "get": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Lista de assuntos",
+                "description": "Lista de assuntos",
+                "operationId": "d7b50095111da4945e100f936eda770e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/assunto/edit/{id}": {
+            "get": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Retorna dados específicos de um Assunto",
+                "description": "Retorna dados específicos de um Assunto",
+                "operationId": "76b18cfa89a465f135a0e2d774c0795a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do assunto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/assunto/update/{id}": {
+            "put": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Atualiza dados de um Assunto",
+                "description": "Atualiza dados de um Assunto",
+                "operationId": "7b846c629f49e00ef8aabc68ff6cfc71",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do assunto",
+                        "required": true
+                    },
+                    {
+                        "name": "Descricao",
+                        "in": "query",
+                        "description": "Insira o nome do assunto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/assunto/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Assunto"
+                ],
+                "summary": "Deleta um Assunto específico",
+                "description": "Deleta um Assunto específico",
+                "operationId": "3f114aa21f46847c8133cb51905dc7da",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do assunto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autor/create": {
+            "post": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Cadastra o Nome do Autor",
+                "description": "Cadastra o Nome do Autor",
+                "operationId": "a37ab1a10999fff1dff1e2f498b04bb2",
+                "parameters": [
+                    {
+                        "name": "Nome",
+                        "in": "query",
+                        "description": "Insira o nome do autor",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autor/read": {
+            "get": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Lista de autores",
+                "description": "Lista de autores",
+                "operationId": "f377621bea936d586abc9f20db2d5175",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autor/edit/{id}": {
+            "get": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Retorna dados específicos de um Autor",
+                "description": "Retorna dados específicos de um Autor",
+                "operationId": "e5728089060e191c247a7413dda4fff2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do autor",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autor/update/{id}": {
+            "put": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Atualiza dados de um Autor",
+                "description": "Atualiza dados de um Autor",
+                "operationId": "298f8700ca6da87131596df68e6764a9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do autor",
+                        "required": true
+                    },
+                    {
+                        "name": "Nome",
+                        "in": "query",
+                        "description": "Insira o nome do autor",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autor/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Autor"
+                ],
+                "summary": "Deleta um Autor específico",
+                "description": "Deleta um Autor específico",
+                "operationId": "25829d00157ae2a70c2039f3b788a349",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do autor",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/livro/create": {
+            "post": {
+                "tags": [
+                    "Livro"
+                ],
+                "summary": "Cadastra os dados do Livro",
+                "description": "Cadastra os dados do Livro",
+                "operationId": "76986317a04038c327af4bb9da625838",
+                "parameters": [
+                    {
+                        "name": "Titulo",
+                        "in": "query",
+                        "description": "Insira o título do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Editora",
+                        "in": "query",
+                        "description": "Insira a editora do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Edicao",
+                        "in": "query",
+                        "description": "Insira a edição do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "AnoPublicacao",
+                        "in": "query",
+                        "description": "Insira o ano de publicação do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Autor_CodAu",
+                        "in": "query",
+                        "description": "Insira o autor do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Assunto_CodAs",
+                        "in": "query",
+                        "description": "Insira o assunto do livro",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/livro/read": {
+            "get": {
+                "tags": [
+                    "Livro"
+                ],
+                "summary": "Lista de livros",
+                "description": "Lista de livros",
+                "operationId": "670bc442f19c4902a6b37c000b7b2454",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/livro/edit/{id}": {
+            "get": {
+                "tags": [
+                    "Livro"
+                ],
+                "summary": "Retorna dados específicos de um Livro",
+                "description": "Retorna dados específicos de um Livro",
+                "operationId": "363d22f94e4abd7dc2ff964310f7f6a4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do livro",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/livro/update/{id}": {
+            "put": {
+                "tags": [
+                    "Livro"
+                ],
+                "summary": "Atualiza dados de um Livro",
+                "description": "Atualiza dados de um Livro",
+                "operationId": "dcf416ebc59f1f4bbb24ae3cfda59f1e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Titulo",
+                        "in": "query",
+                        "description": "Insira o título do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Editora",
+                        "in": "query",
+                        "description": "Insira a editora do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Edicao",
+                        "in": "query",
+                        "description": "Insira a edição do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "AnoPublicacao",
+                        "in": "query",
+                        "description": "Insira o ano de publicação do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Autor_CodAu",
+                        "in": "query",
+                        "description": "Insira o autor do livro",
+                        "required": true
+                    },
+                    {
+                        "name": "Assunto_CodAs",
+                        "in": "query",
+                        "description": "Insira o assunto do livro",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/livro/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Livro"
+                ],
+                "summary": "Deleta um Livro específico",
+                "description": "Deleta um Livro específico",
+                "operationId": "0eefb79331d1cf8bddcf885e7765e4c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Insira o id do livro",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/autor/pdf": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de autores PDF",
+                "description": "Relatório de autores PDF",
+                "operationId": "71a0b951ec02ec8a6a94214a8cb869d1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/autor/xls": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de autores XLS",
+                "description": "Relatório de autores XLS",
+                "operationId": "de2cd08807c72f07de34d4f4a630aa65",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/assunto/pdf": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de assuntos PDF",
+                "description": "Relatório de assuntos PDF",
+                "operationId": "80e0a8136ce92fa5a94170fa8208675b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/assunto/xls": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de assuntos XLS",
+                "description": "Relatório de assuntos XLS",
+                "operationId": "895a810d2c1d19d536a62e6e8f015af4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/livro/pdf": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de livros PDF",
+                "description": "Relatório de livros PDF",
+                "operationId": "5053605e55bd9f0c584a9c07cf9e9249",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/relatorio/livro/xls": {
+            "get": {
+                "tags": [
+                    "Relatório"
+                ],
+                "summary": "Relatório de livros XLS",
+                "description": "Relatório de livros XLS",
+                "operationId": "56d7ef5f85e013378e9f68ab57a10c16",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Assunto",
+            "description": "Assunto"
+        },
+        {
+            "name": "Autor",
+            "description": "Autor"
+        },
+        {
+            "name": "Livro",
+            "description": "Livro"
+        },
+        {
+            "name": "Relatório",
+            "description": "Relatório"
+        }
+    ]
+}
